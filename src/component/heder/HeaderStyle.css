@@ -1,0 +1,69 @@
+.header{
+    display: flex;
+    width: -webkit-fill-available;
+    height: 50px;
+    background: #6f757f;
+    /*margin-bottom: 20px;*/
+    justify-content: space-between;
+    position: fixed;
+    overflow: hidden;
+    z-index: 90;
+}
+.imgLogo{
+    margin-top: 5px;
+    margin-left: 237px;
+    height: 40px;
+    width: 40px;
+}
+.imgLogoAction{
+    margin-top: 5px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100px;
+    box-shadow: 0 0 0 3px #282c34, 0 0 13px;
+    margin-right: 230px;
+    margin-left: 10px;
+}
+.userAuthorized{
+    display: flex;
+}
+.nameUser{
+    /*display: table-cell;*/
+    /*vertical-align: middle;*/
+    margin-top: 9px;
+    /*margin-left: 800px;*/
+    font-size: 22px;
+    font-weight: bold;
+}
+.nameLogo{
+    text-decoration: none;
+    color: #282c34;
+}
+.search-header{
+    border-radius: 100px;
+    width: 260px;
+    height: 40px;
+    background-color: silver;
+    margin-top: 5px;
+    position: absolute;
+    left: 29%;
+    display: flex;
+}
+.search-text-area{
+    background-color: #f0f8ff00;
+    height: 29px;
+    width: 211px;
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+    overflow: hidden;
+    resize: none;
+    border: 1px solid #ffe4c400;
+}
+.icon-header-search{
+    width: 27px;
+    height: 27px;
+    padding-top: 7px;
+    padding-left: 6px;
+}

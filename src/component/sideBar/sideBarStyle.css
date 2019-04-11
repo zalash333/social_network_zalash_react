@@ -1,0 +1,58 @@
+.sideBar{
+    display: flex;
+    width: 200px;
+    /*background: #2BD376;*/
+    /*background: radial-gradient(circle farthest-corner at 100px 50px, #78d382, #c3d6f7);*/
+    flex-flow: row wrap;
+}
+.sideBar .spanElement{
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: 20px;
+    text-decoration: none;
+    width: 100%;
+}
+.block-br{
+    margin-top: 17px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid silver;
+    cursor: default;
+    margin-right: 25px;
+}
+.link{
+    text-decoration: none;
+    color: black;
+    padding-top: 2px;
+    padding-bottom: 7px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    /*padding-left: 8px;*/
+    /*margin-right: 26px;*/
+}
+.spanElement :hover .icon-side-bar{
+    color: #444444;
+}
+.spanElement :hover .link{
+    color: #444444;
+}
+.spanElement :hover {
+    border-radius: 2px;
+    background-color: #d6d6d7;
+    color: #444444;
+    cursor: pointer;
+}
+.spanElement span{
+
+}
+.icon-side-bar{
+    position: relative;
+    top: 5px;
+    padding-right: 6px;
+    width: 24px;
+    height: 24px;
+    color: rgb(149, 149, 149);
+}
+.sideBar-menu-el{
+    padding-left: 8px;
+    margin-right: 26px;
+}

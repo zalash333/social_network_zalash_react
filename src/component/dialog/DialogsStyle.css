@@ -1,0 +1,136 @@
+.dialog {
+    display: flex;
+    margin-left: 20px;
+    /*background-color: #78d382;*/
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    border: 1px solid silver;
+    border-radius: 3px;
+    flex-flow: column;
+}
+
+.dialog-search {
+
+    border: 1px solid silver;
+    display: flex;
+    padding: 0 20px;
+    height: 54px;
+    line-height: 54px;
+    border-radius: 4px 4px 0 0;
+    font-size: 16px;
+    outline: none;
+    color: #000;
+}
+
+.dialog .massage {
+    display: flex;
+    margin-left: 20px;
+}
+
+.dialog img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    box-shadow: 0 0 0 3px #282c34, 0 0 13px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+}
+
+.dialog span {
+    position: relative;
+    top: 20px;
+    margin-left: 100px;
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+}
+
+.dialog h4 {
+    color: #6f757f;
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+.line-dialogs {
+    border-bottom: 1px solid silver;
+    margin-left: 90px;
+}
+
+.link-message {
+    text-decoration: none;
+}
+
+.style-block-dialogs :hover {
+    background-color: #f4f4f4;
+}
+
+.icon-dialog-search {
+    height: 25px;
+    width: 25px;
+    padding-top: 13px;
+    padding-left: 12px;
+    color: #9d9d9d;
+}
+
+.input-search-dialog {
+    width: 100%;
+    border: 1px solid white;
+    outline: none;
+}
+
+.icon-add-dialog {
+    height: 25px;
+    width: 25px;
+    padding-top: 13px;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #9d9d9d;
+}
+.block-checked-messages{
+    background-color: white;
+    width: 30%;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    margin-left: 20px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: column;
+    height: min-content;
+}
+.text-all-massage{
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 20px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    background-color: #d6d6d6;
+    border-left: 3px solid black;
+    cursor: pointer;
+}
+.text-in-massage{
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 23px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    cursor: pointer;
+}
+.container-dialog{
+    display: flex;
+}
+.icon-in{
+    height: 25px;
+    width: 25px;
+    position: relative;
+    left: 53px;
+    bottom: -2px;
+}
+.text-in-massage:hover{
+      background-color: #d6d6d6;
+  }
+.text-all-massage:hover{
+      background-color: #d6d6d6;
+  }

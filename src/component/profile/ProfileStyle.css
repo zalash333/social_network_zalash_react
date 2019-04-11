@@ -1,0 +1,330 @@
+.profile{
+    display: flex;
+    margin-left: 20px;
+    flex-direction: column;
+    height: 100%;
+}
+.scroll{
+    overflow: hidden;
+    overflow-y: scroll;
+
+}
+.scroll::-webkit-scrollbar {width:0px;}
+.profile .avatar{
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+}
+.imgProfile{
+    height: 200px;
+    width: 100%;
+    border-radius: 13px;
+}
+.profileUsers{
+    display: flex;
+    margin-top: 20px;
+    flex-flow: row wrap;
+    background-color: white;
+    padding-top: 14px;
+    padding-left: 14px;
+    padding-bottom: 14px;
+    border-radius: 6px;
+    border: 1px solid silver;
+}
+.informationUsers{
+    display: flex;
+    margin-left: 20px;
+    flex-flow: column wrap;
+    width: -webkit-fill-available;
+    /*border-bottom-style: groove;*/
+    /* height: 1991px; */
+    min-width: 230px;
+    max-width: 70%;
+}
+.massageAllUsers{
+/*margin-top: 20px;*/
+}
+.buttonAllUsers{
+    /*border-bottom-style: groove;*/
+}
+.massages{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin-bottom: 20px;
+    padding-top: 14px;
+    padding-left: 14px;
+    padding-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid silver;
+    /*border-bottom: 1px solid gainsboro;*/
+}
+.avatarMassage{
+    margin-left: 5px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100px;
+    box-shadow: 0 0 0 3px #282c34, 0 0 13px;
+}
+/*.massageAllUsers span{*/
+    /*margin-left: 20px;*/
+    /*margin-top: 20px;*/
+    /*margin-bottom: 20px;*/
+/*}*/
+.textarea-my-post{
+    height: auto;
+    width: 100%;
+    font-size: 20px;
+    border-color: white;
+    resize: none;
+    background-color: white;
+    outline:none;
+    overflow: hidden;
+    padding-bottom: 100px;
+}
+.dataName{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    color: #6f757f;
+}
+.avatarDataName{
+    display: flex;
+}
+.textPostMyWall{
+    text-overflow:ellipsis;
+    white-space: normal;
+    width: 400px;
+    word-wrap: break-word;
+    padding-top: 15px;
+    padding-bottom: 26px;
+    padding-left: 29px;
+    font-size: 18px;
+}
+.textareaAndButton{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid silver;
+    margin-bottom: 20px;
+}
+.allPostAndOnePost{
+    display: flex;
+    background-color: white;
+    /*padding-top: 14px;*/
+    /*padding-left: 14px;*/
+    /*padding-bottom: 14px;*/
+    border-radius: 6px;
+    border-top:1px solid silver;
+    border-left:1px solid silver;
+    border-right:1px solid silver;
+}
+.allPostAndOnePost div{
+    /*margin-right: 20px;*/
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+.active {
+    border-bottom: 2px solid;
+}
+.allPostAndOnePost :hover{
+    border-bottom: 2px solid silver;
+}
+.allPostAndOnePost :hover .notActive{
+    border-bottom: 2px solid red;
+}
+.icon-lick{
+    color: #888f99;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 25px;
+    height: 25px;
+}
+.icon-comments{
+    color: #888f99;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 25px;
+    height: 25px;
+}
+.icon-repost{
+    color: #888f99;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 25px;
+    height: 25px;
+}
+.iconItsMyPost :hover{
+    color: #6f757f;
+}
+.avatarPushMyPost{
+    padding-right:5px;
+    margin-right: 5px;
+}
+.avatarMyPost{
+    margin-left: 5px;
+    height: 24px;
+    width: 24px;
+    border-radius: 100px;
+    box-shadow: 0 0 0 3px #282c34, 0 0 13px;
+}
+.icon-my-post{
+    color: #888f99;
+    padding-right: 5px;
+    width: 30px;
+    height: 30px;
+}
+.myPostActive{
+    display: flex;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    height: 50px;
+    border: 1px solid silver;
+}
+.smile :hover{
+    color: #282c34;
+}
+.myPostActive div{
+    margin-left: 18px;
+}
+.block-icon-my-wall{
+    margin-top: 10px;
+    margin-bottom: 14px;
+}
+.block-icon-my-wall-active{
+    margin-bottom: 8px;
+}
+.block-icon-my-wall-active :hover{
+    color: #282c34;
+}
+.block-button-my-wall{
+    margin-top: 10px;
+    margin-bottom: 14px;
+}
+.myPostActive :hover{
+    color: #282c34;
+}
+.avatarAndTextarea{
+    display: flex;
+    margin-left: 14px;
+    margin-top: 14px;
+}
+.buttonPushMyPost{
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 7px;
+    padding-bottom: 6px;
+    margin-right: 20px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    outline: none;
+    color: white;
+    background-color: #9fa5af;
+}
+.block-button-my-wall :hover{
+    color: white;
+    background-color: #a8aeb8;
+}
+.textarea-my-post-close{
+    height: auto;
+    width: 100%;
+    font-size: 20px;
+    border-color: white;
+    resize: none;
+    background-color: white;
+    outline:none;
+    overflow: hidden;
+}
+.smile{
+    margin-right: 15px;
+}
+.emojiBlock{
+    position: absolute;
+    border: 1px solid silver;
+    right: 14%;
+    top: 38%;
+}
+.status-user{
+    display: flex;
+}
+.status-current-user{
+    padding-left: 5px;
+    width: 200px;
+    position: absolute;
+    margin-left: 44px;
+}
+.name-lastName{
+    font-size: 36px;
+    font-family: fantasy;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+.information-editing{
+    display: flex;
+    flex-flow: column;
+}
+.button-information-editing{
+    /*margin-top: 10px;*/
+    text-align: center;
+}
+.name-lastName-status-block{
+    padding-bottom: 10px;
+    border-bottom: 1px solid silver;
+    margin-bottom: 10px;
+}
+.status-user:hover{
+    background-color: silver;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.status-user{
+    padding-left: 22px;
+}
+.information-click{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.information-click:hover{
+    background-color: silver;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.contact-profile{
+    padding-left: 50px;
+}
+.button-editing-profile:hover{
+    background-color: silver;
+    /*color: white;*/
+    cursor: pointer;
+    border-radius: 3px;
+}
+.button-editing-profile{
+    margin-top: 15px;
+    height: 30px;
+    background-color: #d6d6d6;
+    border-radius: 3px;
+    font-size: 17px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+}
+.button-following-profile{
+    margin-top: 15px;
+    height: 30px;
+    background-color: #d6d6d6;
+    border-radius: 3px;
+    font-size: 17px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+}
+.button-following-profile:hover{
+    background-color: silver;
+    /*color: white;*/
+    cursor: pointer;
+    border-radius: 3px;
+}

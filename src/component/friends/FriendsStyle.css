@@ -1,0 +1,84 @@
+.friends{
+    display: flex;
+    /*margin-left: 20px;*/
+    /*flex-direction: column;*/
+    /*height: 100%;*/
+}
+.friends-container {
+    display: flex;
+    margin-left: 20px;
+    /*background-color: #78d382;*/
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    border: 1px solid silver;
+    border-radius: 3px;
+    flex-flow: column;
+}
+.friends-search{
+    display: flex;
+    height: 50px;
+    border: 1px solid silver;
+}
+.icon-friends-search {
+    height: 25px;
+    width: 25px;
+    padding-top: 13px;
+    padding-left: 12px;
+    color: #9d9d9d;
+}
+
+.input-search-friends {
+    width: 100%;
+    border: 1px solid white;
+    outline: none;
+}
+
+.icon-add-friends {
+    height: 25px;
+    width: 25px;
+    padding-top: 13px;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #9d9d9d;
+}
+.friends-all-users{
+    display: flex;
+    padding-top: 10px;
+    border-bottom: 1px solid silver;
+}
+
+.photo-all-users{
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    box-shadow: 0 0 0 3px #282c34, 0 0 13px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+    margin-left: 25px;
+}
+.name-friends-all-users{
+    position: relative;
+    top: 20px;
+    margin-left: -20px;
+    margin-top: -15px;
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+}
+.block-search{
+    background-color: black;
+    width: 100%;
+    height: 22px;
+}
+.friends-span{
+    display: flex;
+    flex-flow: column;
+}
+.friends-status{
+    margin-top: 30px;
+}
+.friends-all-users:hover{
+    background-color: #f6f6f6;
+}

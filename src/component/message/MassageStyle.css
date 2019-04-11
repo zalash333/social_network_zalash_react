@@ -1,0 +1,117 @@
+.massageStyle{
+    display: flex;
+    margin-left: 20px;
+    /*height: 634px;*/
+    width: 70%;
+    flex-flow: column;
+    background-color: white;
+    border: 1px solid silver;
+    border-radius: 3px;
+}
+
+.massageYou1 {
+    padding-left: 45px;
+    width: 70%;
+    height: 520px;
+    overflow: hidden;
+    overflow-y: scroll;
+    background-color: white;
+}
+.massageYou1::-webkit-scrollbar {width:0px;}
+.massageStyle img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    box-shadow: 0 0 0 3px #282c34, 0 0 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 40px;
+}
+.massageStyle .massageYou{
+    display: flex;
+}
+.massageStyle .massageYou span{
+    margin-top: 20px;
+}
+.massageStyle .massageItsMe{
+    display: flex;
+}
+.massageStyle .massageItsMe span{
+    margin-top: 20px;
+}
+.inputBar{
+    background-color: #D6D6D6;
+    padding-bottom: 17px;
+    padding-top: 17px;
+    display: flex;
+}
+.dialog-name {
+    display: flex;
+    height: 50px;
+    border: 1px solid silver;
+    align-items: center;
+}
+.show-box{
+    background-color: white;
+    width: 30%;
+    height: 111px;
+    margin-left: 20px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: column;
+}
+.block-vr{
+    display: flex;
+}
+.input-message{
+    outline: none;
+    background-color: rgba(97, 218, 251, 0);
+    border: 1px solid rgba(255, 0, 0, 0);
+    width: 82%;
+    height: 90%;
+    margin-left: 8px;
+}
+.button-click-message{
+
+}
+.div-and-input{
+    display: flex;
+    width: 80%;
+    background-color: #e6e6e6;
+    height: 40px;
+    /*margin-left: 10%;*/
+    border-radius: 11px;
+    margin-right: 6px;
+}
+.icon-attach-file{
+    width: 35px;
+    height: 35px;
+    padding-left: 13px;
+    margin-right: 6px;
+    margin-top: 3px;
+    color: #888f99;
+}
+.icon-fi-camera{
+    width: 24px;
+    height: 24px;
+    padding-left: 8px;
+    position: relative;
+    top: 6px;
+    color: #888f99;
+}
+.icon-my-smile{
+    width: 24px;
+    height: 24px;
+    padding-left: 8px;
+    position: relative;
+    top: 6px;
+    color: #888f99;
+}
+.dialog-name-style{
+    margin-left: auto;
+    margin-right: auto;
+}
+.hover-icon :hover{
+    color: #737373;
+}
