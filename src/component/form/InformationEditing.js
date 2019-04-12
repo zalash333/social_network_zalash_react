@@ -34,10 +34,6 @@ const InformationEditing = (props) => {
 };
 let mapStateToProps = (state) => {
     return {
-        currentUser: state.checkUserLogin.informationUsers[state.loginId.id],
-        loginUser: state.loginId.id,
-        messageMyWall: state.addMessageMyWall.informationUsers[state.loginId.id].myWall,
-        information: state.users.information,
         toggleInformation: state.users.toggleInformation,
     }
 };

@@ -30,11 +30,6 @@ class InformationForm extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        currentUser: state.checkUserLogin.informationUsers[state.loginId.id],
-        loginUser: state.loginId.id,
-        messageMyWall: state.addMessageMyWall.informationUsers[state.loginId.id].myWall,
-        information: state.users.information,
-        toggleInformation: state.users.toggleInformation,
         initialValues: {
             aboutMe: state.users.information.aboutMe
         }
@@ -42,14 +37,8 @@ let mapStateToProps = (state) => {
 };
 let mapDispatchToProps = (dispatch) => {
     return {
-        addMessageMyWall: (message,id)=>{
-            dispatch(addMessageMyWallAction(message, id))
-        },
         putInformationOfForm: (e)=>{
             dispatch(putInformationOfForm(e))
-        },
-        contactsFormAction: (e)=>{
-            dispatch(contactsFormAction(e))
         }
     }
 };

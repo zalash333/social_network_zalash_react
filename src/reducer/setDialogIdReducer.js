@@ -1,11 +1,11 @@
 import axiosInstance from "../dal/axios-instance";
 
 let initialStateSetDialogId = {
-    dialogsId:'1488',
-    dialogUsersAll:[],
-    informationUsers:[],
-    currentMessageUser:''
-
+    dialogsId: '1488',
+    dialogUsersAll: [],
+    informationUsers: [],
+    currentMessageUser: '',
+    currentUser: ''
 };
 const SET_DIALOG_ID = 'SET_DIALOG_ID';
 export const dialogIdAction = (mas) => {
@@ -46,40 +46,40 @@ const clearAllDialogAction = () => {
     }
 };
 
+const GET_USER_PROFILE = 'GET_USER_PROFILE';
+const getUserProfileAction = (profile) => ({type: GET_USER_PROFILE,profile});
+
+export const getUserProfile = (id)=>async(dispatch)=>{
+    debugger
+    let request = await axiosInstance.get(`profile/${id}`);
+    dispatch(getUserProfileAction(request.data))
+};
+
 
 // Запросить список собеседников, с кем я когда-либо вёл беседу
 // return http://prntscr.com/n6nz6o
-export const getDialogs = () => (dispatch,getState)=>{
+export const getDialogs = () => async (dispatch) => {
     // dispatch(clearAllDialogAction());
     debugger
-    axiosInstance.get('dialogs')
-        .then(res => {
-            console.log(res.data.length);
-            // dispatch(getDialogAction(res.data));
-            dispatch(getUsers(res.data));
-        });
-
-
+    let get = await axiosInstance.get('dialogs');
+    dispatch(getUsers(get.data))
 };
 
-const getUsers = (users) => (dispatch)=>{
-    debugger
-    let profileUsers = (users)=>{
-        let buffer = [];
-    for(let i = 0; users.length>i;i++){
-        axiosInstance.get(`profile/${users[i].id}`).then(response => {
-            buffer.push(response.data);
-            console.log(response.data);
-
-        })}
+const getUsers = (users) => async (dispatch) => {
+    let buffer = [];
+    let usersAllDialogs = await (async (us = users) => {
+        for (let i = 0; us.length > i; i++) {
+            let request = await axiosInstance.get(`profile/${us[i].id}`);
+            buffer.push(request.data);
+        }
         return buffer
-    };
-    dispatch(getUsersProfileAction(profileUsers(users)))
+    })();
+    dispatch(getUsersProfileAction(usersAllDialogs))
 };
 
 // запросить список сообщений с конкретным собеседником (userId)
 // return http://prntscr.com/n6nq5a
-export const getMessages = (userId) => (dispatch)=>{
+export const getMessages = (userId) => (dispatch) => {
     axiosInstance.get(`dialogs/${userId}/messages`)
         .then(res => {
             debugger
@@ -89,13 +89,11 @@ export const getMessages = (userId) => (dispatch)=>{
 };
 
 
-
 // отправить сообщение (body: string) конкретному собеседнику (userId)
-export const sendMessage =(userId, body) => (dispatch)=>
-{debugger
+export const sendMessage = (userId, body) => (dispatch) => {
+    debugger
     axiosInstance.post(`dialogs/${userId}/messages`, {body})
         .then(res => {
-            debugger
             console.log(res.data);
             dispatch(getMessages(userId))
         });
@@ -127,8 +125,7 @@ function deleteMessage(messageId) {
 }
 
 // восстановить удалённое сообщение (автоматически оно перестаёт ещё и быть спамом, если было отмечено как спам)
-function restoreMessage(messageId)
-{
+function restoreMessage(messageId) {
     axiosInstance.put(`dialogs/messages/${messageId}/restore`)
         .then(res => console.log(res.data));
 }
@@ -149,20 +146,21 @@ function newMessagesCount() {
 }
 
 
-
-let setDialogIdReducer = (state=initialStateSetDialogId,action)=>{
-   let copyState = {...state};
-   debugger
-    switch (action.type){
+let setDialogIdReducer = (state = initialStateSetDialogId, action) => {
+    debugger
+    let copyState = {...state};
+    switch (action.type) {
         case CLEAR_ALL_DIALOG:
-            return {...state,informationUsers:[]};
+            return {...state, informationUsers: []};
+        case GET_USER_PROFILE:
+            return {...state, currentUser: action.profile};
         case GET_CURRENT_MESSAGE_USER:
-            return {...state, currentMessageUser:action.message};
+            return {...state, currentMessageUser: action.message};
         case GET_DIALOG:
-            return {...state,dialogUsersAll:action.information};
+            return {...state, dialogUsersAll: action.information};
         case GET_USERS_PROFILE:
             // copyState.informationUsers.push(action.information);
-            return {...state,informationUsers:action.information};
+            return {...state, informationUsers: action.information};
         case SET_DIALOG_ID:
             copyState.dialogsId = action.id;
             return copyState;

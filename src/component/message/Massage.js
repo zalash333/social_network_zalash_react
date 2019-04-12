@@ -8,6 +8,7 @@ import {addMessageAction} from "../../reducer/addMessageReducer";
 import {dialogIdAction, getMessages, sendMessage} from "../../reducer/setDialogIdReducer";
 import {loginAction} from "../../reducer/loginIdReducer";
 import MassageHoc from "./MassageHoc";
+import missingAvatar from '../../img/missingAvatar.jpg';
 
 let Massage = (props) => {
     let message = React.createRef();
@@ -21,20 +22,21 @@ let Massage = (props) => {
         <div className='block-vr'>
             <div className="massageStyle">
                 <div className="dialog-name">
-                    <h2 className='dialog-name-style'>{massagePage[dialogId].name}</h2>
+                    <h2 className='dialog-name-style'>{props.currentUserMessage.fullName}</h2>
                 </div>
                 <div className="massageBlock">
                     <div className="massageYou1" ref={(scroller) => {
                         window.scroller = scroller
                     }} onScroll={() => {
                     }}>
+                        {console.log(props.currentUserMessage)}
                         {!props.currentMessageUser?props.getMessages(currentDialogId):props.currentMessageUser.map((el, i) => {
                             setTimeout(() => {
                                 window.scroller.scrollTop = window.scroller.scrollHeight;
                             }, 0);
                             if (props.currentMessageUser[i].senderId !== props.id) {
                                 return (<div className="massageYou">
-                                    <img src={massagePage[dialogId].photo}/>
+                                    <img src={props.currentUserMessage.photos.small?props.currentUserMessage.photos.small:missingAvatar}/>
                                     <span>{el.body}</span>
                                 </div>)
                             } else {
@@ -83,7 +85,9 @@ let mapStateToProps = (state) => {
         messageTarget: state.addMessage,
         usersTest: state.checkUserLogin.informationUsers,
         currentMessageUser: state.setDialogId.currentMessageUser,
-        id:state.users.id
+        id:state.users.id,
+        informationUsers: state.setDialogId.informationUsers,
+        currentUserMessage: state.setDialogId.currentUser,
     }
 };
 let mapDispatchToProps = (dispatch) => {

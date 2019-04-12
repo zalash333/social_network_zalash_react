@@ -24,7 +24,6 @@ let mapStateToProps = (state) => {
     return {
         currentUser: state.checkUserLogin.informationUsers[state.loginId.id],
         loginUser: state.loginId.id,
-        messageMyWall: state.addMessageMyWall.informationUsers[state.loginId.id].myWall,
     }
 };
 let mapDispatchToProps = (dispatch) => {

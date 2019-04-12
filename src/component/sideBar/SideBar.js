@@ -27,7 +27,7 @@ const SideBar = (props) => {
                 </span>
                     </div>
                 </NavLink>
-                <NavLink className='link' to={`/vk.com/friends/id${id}`} onClick={props.usersAction} activeClassName="">
+                <NavLink className='link' to={`/vk.com/friends/id${id}`}  activeClassName="">
                     <div className='sideBar-menu-el'>
                         <MdPerson className='icon-side-bar'/>
                         <span className='name-side-bar'>

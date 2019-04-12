@@ -1,6 +1,5 @@
 import axiosInstance from "../dal/axios-instance";
 import {setStatus, statuses} from "./statusReducer";
-import axiosMp3 from "../dal/axios-mp3";
 
 let initialStateUsers = {
     users: [],
@@ -62,7 +61,6 @@ export const photoFormAction = photo => ({type: PHOTO_FORM, photo});
 
 
 export const putInformationOfForm = (inf) => (dispatch, getState) => {
-    debugger
     let toggleInformation = getState().users.toggleInformation;
     if (toggleInformation === 'CONTACTS') {
         dispatch(contactsFormAction(inf))
@@ -89,13 +87,12 @@ export const putInformationOfForm = (inf) => (dispatch, getState) => {
             console.log(res)
             dispatch(setStatus(statuses.SUCCESS))
         })
-    } else if(toggleInformation === 'INFORMATION'){
+    } else if (toggleInformation === 'INFORMATION') {
         dispatch(informationFormAction(inf))
     }
     let information = getState().users.information;
     axiosInstance.put('profile', information).then(rus => {
         console.log(rus);
-        debugger
     })
 };
 
@@ -109,7 +106,6 @@ const getInformationUserAction = (information) => ({type: GET_INFORMATION_USER, 
 
 export const getInformationUser = () => (dispatch, getState) => {
     let userId = getState().users.id;
-    debugger
     axiosInstance.get(`profile/9`).then(response => {
         dispatch(getInformationUserAction(response.data))
         console.log(response.data)
@@ -120,7 +116,6 @@ export const setInformationUser = () => (dispatch, getState) => {
     let information = getState().users.information;
     axiosInstance.put('profile', information).then(rus => {
         console.log(rus);
-        debugger
     })
 };
 export const getStatusAction = (id) => (d) => {
@@ -136,11 +131,7 @@ export const getStatusAction = (id) => (d) => {
 const AUTH_ME = 'AUTH_ME';
 export const informationUserMe = (id) => ({type: AUTH_ME, id});
 
-export const authMeAction = () => (d, getState) => {
-    let loginCheck = getState().users.loginCheck;
-    axiosInstance.get('profile/9').then(r => {
-        console.log(r)
-    })
+export const authMeAction = () => (d) => {
     axiosInstance.get('auth/me')
         .then(r => {
             console.log(r)
@@ -178,21 +169,18 @@ const TOGGLE = 'TOGGLE';
 export const toggle = () => ({type: TOGGLE});
 
 const GET_USERS = 'GET_USERS';
-export const usersAction = (num) => (d, getState, setState) => {
+export const usersAction = (num) => async (d, getState) => {
     let page = getState().users.page;
-    let totalCount = getState().users.totalCount;
     // d(setStatus(statuses.INPROGRESS));
-    debugger
-    if(page===num){
-        d(getUsers(null, null))
-    }
-    axiosInstance.get(`users?page=${page}&count=3`).then(r => {
-        d(getUsers(r.data.items, r.data.totalCount))
-        // d(setStatus(statuses.SUCCESS))
-    })
-        .catch((error) => {
-            console.log(error);
-        })
+    // if (page === num) {
+    //     d(getUsers(null, null))
+    // }
+    let request = await axiosInstance.get(`users?page=${page}&count=6`);
+    //     .then(r => {
+    //     d(getUsers(r.data.items, r.data.totalCount))
+    //     // d(setStatus(statuses.SUCCESS))
+    // })
+    d(getUsers(request.data.items, request.data.totalCount))
 
 };
 const getUsers = (users, totalCount) => ({type: GET_USERS, users, totalCount});
@@ -209,7 +197,13 @@ let usersReducer = (state = initialStateUsers, action) => {
             } else if (state.users.length > action.totalCount) {
                 alert('error')
             }
-            return {...state, users: copyUsers, myFriendsCheck:false, page:state.page+1, totalCount: action.totalCount};
+            return {
+                ...state,
+                users: copyUsers,
+                myFriendsCheck: false,
+                page: state.page + 1,
+                totalCount: action.totalCount
+            };
         case GET_STATUS_USER:
             return {...state, status: action.status};
         case AUTH_ME:

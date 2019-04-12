@@ -16,11 +16,10 @@ const FriendsHoc = (WrappedComponent) => {
         }
 
         shouldComponentUpdate() {
-            debugger
             return this.props.myFriendsCheck
         }
 
-        componentDidUpdate() {
+        componentDidMount() {
             debugger
             this.props.usersAction(0);
         }

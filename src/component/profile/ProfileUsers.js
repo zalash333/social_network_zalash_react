@@ -84,10 +84,8 @@ let mapStateToProps = (state) => {
     return {
         currentUser: state.checkUserLogin.informationUsers[state.loginId.id],
         loginUser: state.loginId.id,
-        messageMyWall: state.addMessageMyWall.informationUsers[state.loginId.id].myWall,
         usersTest: state.checkUserLogin.informationUsers,
         dataCheck: state.dataCheck.data,
-        dataMyWall: state.addMessageMyWall.informationUsers[state.loginId.id].data,
         callMessage: state.callMessage.message,
         flags: state.addMessageMyWall.flags,
         idUsers: state.users.id,
@@ -104,9 +102,6 @@ let mapStateToProps = (state) => {
 };
 let mapDispatchToProps = (dispatch) => {
     return {
-        addMessageMyWall: (message, id, date, month, hours, minutes) => {
-            dispatch(addMessageMyWallAction(message, id, date, month, hours, minutes))
-        },
         loginUserAction: (mas) => {
             dispatch(loginAction(mas))
         },

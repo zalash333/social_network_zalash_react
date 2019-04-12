@@ -1,13 +1,12 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {addMessageMyWallAction} from "../../reducer/addMessageMyWallReducer";
-import {contactsFormAction, putInformationOfForm} from "../../reducer/usersReducer";
+import { putInformationOfForm} from "../../reducer/usersReducer";
 import './editingFormCss.css';
 
 class ContactsForm extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
         debugger
     }
     render(){
@@ -31,11 +30,7 @@ class ContactsForm extends React.Component{
 let mapStateToProps = (state) => {
     debugger
     return {
-        currentUser: state.checkUserLogin.informationUsers[state.loginId.id],
-        loginUser: state.loginId.id,
-        messageMyWall: state.addMessageMyWall.informationUsers[state.loginId.id].myWall,
         information: state.users.information,
-        toggleInformation: state.users.toggleInformation,
         initialValues: {
             facebook: state.users.information.contacts.facebook,
             github: state.users.information.contacts.github,
@@ -50,14 +45,8 @@ let mapStateToProps = (state) => {
 };
 let mapDispatchToProps = (dispatch) => {
     return {
-        addMessageMyWall: (message,id)=>{
-            dispatch(addMessageMyWallAction(message, id))
-        },
         putInformationOfForm: (e)=>{
             dispatch(putInformationOfForm(e))
-        },
-        contactsFormAction: (e)=>{
-            dispatch(contactsFormAction(e))
         }
     }
 };

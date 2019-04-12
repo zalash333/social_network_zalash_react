@@ -16,19 +16,20 @@ const Dialogs = (props) => {
     return (
         <div className='container-dialog'>
             <div className="dialog">
-<Search/>
-                {props.informationUsers.map((user, index) => {
+                <Search/>
+                {!props.informationUsers.length?'':props.informationUsers.map((user, index) => {
                     return (
                         <div className='style-block-dialogs'>
                             <NavLink className='link-message'
                                      to={`/vk.com/massage/id${props.id}/${props.informationUsers[index].userId}`}
-                                     >
+                            >
                                 <div>
                                     <div>{console.log(props.informationUsers[index].userId)}
                                         <span>{props.informationUsers[index].fullName}</span>
                                     </div>
                                     <div className="massage">
-                                        <img src={props.informationUsers[index].photos.small?props.informationUsers[index].photos.small:missingAvatar}/>
+                                        <img
+                                            src={props.informationUsers[index].photos.small ? props.informationUsers[index].photos.small : missingAvatar}/>
                                         <div>
                                             <h4>{'потом будет круто пока так'}</h4>
                                         </div>
@@ -59,9 +60,9 @@ let mapStateToProps = (state) => {
         users: state.checkUserLogin.informationUsers,
         dialogsPage: state.dialogsPage.dialogsPage,
         usersTest: state.checkUserLogin.informationUsers,
-        dialogUsersAll:state.setDialogId.dialogUsersAll,
-        informationUsers:state.setDialogId.informationUsers,
-        id:state.users.id
+        dialogUsersAll: state.setDialogId.dialogUsersAll,
+        informationUsers: state.setDialogId.informationUsers,
+        id: state.users.id
 
     }
 };
@@ -76,13 +77,7 @@ let mapDispatchToProps = (dispatch) => {
         getDialogs() {
             dispatch(getDialogs())
         },
-        sendMessage() {
-            dispatch(sendMessage())
-        },
-        getMessages(e){
-            dispatch(getMessages(e))
-        }
     }
 };
 
-export default DialogHoc(withRouter(connect(mapStateToProps, mapDispatchToProps)(Dialogs)));
+export default DialogHoc(connect(mapStateToProps, mapDispatchToProps)(Dialogs));

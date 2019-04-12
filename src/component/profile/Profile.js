@@ -143,7 +143,7 @@ const Profile = (props) => {
                                     </div>
                                     <div className='block-button-my-wall'>
                                         <button className='buttonPushMyPost' onClick={() => {
-                                            addMessageMyWall(callMessage, loginUser, now.getDate(), now.getMonth(), now.getHours(), now.getMinutes());
+                                            addMessageMyWall(callMessage, now.getDate(), now.getMonth(), now.getHours(), now.getMinutes());
                                             setCallMessage('');
                                         }}>send
                                         </button>
@@ -193,10 +193,10 @@ let mapStateToProps = (state) => {
     return {
         currentUser: state.checkUserLogin.informationUsers[state.loginId.id],
         loginUser: state.loginId.id,
-        messageMyWall: state.addMessageMyWall.informationUsers[state.loginId.id].myWall,
+        messageMyWall: state.addMessageMyWall.informationUsers.myWall,
         usersTest: state.checkUserLogin.informationUsers,
         dataCheck: state.dataCheck.data,
-        dataMyWall: state.addMessageMyWall.informationUsers[state.loginId.id].data,
+        dataMyWall: state.addMessageMyWall.informationUsers.data,
         callMessage: state.callMessage.message,
         flags: state.addMessageMyWall.flags,
         idUsers: state.users.id,
@@ -209,8 +209,8 @@ let mapStateToProps = (state) => {
 };
 let mapDispatchToProps = (dispatch) => {
     return {
-        addMessageMyWall: (message, id, date, month, hours, minutes) => {
-            dispatch(addMessageMyWallAction(message, id, date, month, hours, minutes))
+        addMessageMyWall: (message, date, month, hours, minutes) => {
+            dispatch(addMessageMyWallAction(message, date, month, hours, minutes))
         },
         loginUserAction: (mas) => {
             dispatch(loginAction(mas))
@@ -227,23 +227,11 @@ let mapDispatchToProps = (dispatch) => {
         addSmile: (s) => {
             dispatch(addSmileAction(s))
         },
-        authMeAction: () => {
-            dispatch(authMeAction())
-        },
         flagStatusAction: () => {
             dispatch(flagStatusAction())
         },
         putStatusAction: (status) => {
             dispatch(putStatusAction(status))
-        },
-        getStatusAction: (id) => {
-            dispatch(getStatusAction(id))
-        },
-        getInformationUser() {
-            dispatch(getInformationUser())
-        },
-        setInformationUser() {
-            dispatch(setInformationUser())
         },
         toggleFunc() {
             dispatch(toggle())
