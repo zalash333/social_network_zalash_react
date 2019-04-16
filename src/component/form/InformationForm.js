@@ -13,15 +13,16 @@ class InformationForm extends React.Component {
     render() {
         return (
             <form className='form-container' onSubmit={this.props.handleSubmit(this.props.putInformationOfForm)}>
-                <div className='editing-form'>
-                    <div className='name-editing-form'>aboutMe:</div>
-                    <Field
+                {Object.keys(this.props.initialValues).map(key => <div className='editing-form'>
+                        <div className='name-editing-form'>{key}:</div> <Field
                         className='input-form'
-                        name='aboutMe'
+                        name={key}
                         component="input"
                         type="text"
-                        placeholder='aboutMe'
-                    /></div>
+                        placeholder={key}
+                    />
+                    </div>
+                )}
                 <button className='button-form' type="submit">Submit</button>
             </form>
         )
@@ -31,7 +32,10 @@ class InformationForm extends React.Component {
 let mapStateToProps = (state) => {
     return {
         initialValues: {
-            aboutMe: state.users.information.aboutMe
+            aboutMe: state.users.information.aboutMe,
+            lookingForAJob: state.users.information.lookingForAJob,
+            lookingJob: state.users.information.lookingForAJobDescription,
+            fullName: state.users.information.fullName
         }
     }
 };

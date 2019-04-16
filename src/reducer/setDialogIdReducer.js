@@ -5,7 +5,11 @@ let initialStateSetDialogId = {
     dialogUsersAll: [],
     informationUsers: [],
     currentMessageUser: '',
-    currentUser: ''
+    currentUser: {
+        photos:{
+            small:''
+        }
+    }
 };
 const SET_DIALOG_ID = 'SET_DIALOG_ID';
 export const dialogIdAction = (mas) => {
@@ -49,7 +53,7 @@ const clearAllDialogAction = () => {
 const GET_USER_PROFILE = 'GET_USER_PROFILE';
 const getUserProfileAction = (profile) => ({type: GET_USER_PROFILE,profile});
 
-export const getUserProfile = (id)=>async(dispatch)=>{
+export const getUserProfile = (id)=> async(dispatch)=>{
     debugger
     let request = await axiosInstance.get(`profile/${id}`);
     dispatch(getUserProfileAction(request.data))

@@ -12,7 +12,7 @@ import missingAvatar from '../../img/missingAvatar.jpg';
 
 let Massage = (props) => {
     let message = React.createRef();
-    let {massagePage, currentUser, dialogId,match, setDialogIdAction, usersTest,} = props;
+    let {massagePage, currentUser, dialogId, match, setDialogIdAction, usersTest,} = props;
     let currentUserId = match.params.id;
     let currentDialogId = match.params.userId;
     if (currentDialogId !== dialogId && !!usersTest[currentUserId]) {
@@ -29,19 +29,24 @@ let Massage = (props) => {
                         window.scroller = scroller
                     }} onScroll={() => {
                     }}>
-                        {console.log(props.currentUserMessage)}
-                        {!props.currentMessageUser?props.getMessages(currentDialogId):props.currentMessageUser.map((el, i) => {
+                        {!props.currentMessageUser ? props.getMessages(currentDialogId) : props.currentMessageUser.map((el, i) => {
                             setTimeout(() => {
-                                window.scroller.scrollTop = window.scroller.scrollHeight;
+                                debugger
+                                if (window.scroller) {
+                                    window.scroller.scrollTop = window.scroller.scrollHeight
+                                }
                             }, 0);
                             if (props.currentMessageUser[i].senderId !== props.id) {
                                 return (<div className="massageYou">
-                                    <img src={props.currentUserMessage.photos.small?props.currentUserMessage.photos.small:missingAvatar}/>
+                                        {console.log(props.currentUserMessage)}
+                                        {console.log(currentUser)}
+                                    <img
+                                        src={props.currentUserMessage.photos.small ? props.currentUserMessage.photos.small : missingAvatar}/>
                                     <span>{el.body}</span>
                                 </div>)
                             } else {
                                 return (<div className="massageItsMe">
-                                    <img src={currentUser.photo}/>
+                                    <img src={props.information.photos?props.information.photos.small:missingAvatar}/>
                                     <span>{el.body}</span>
                                 </div>)
                             }
@@ -63,7 +68,7 @@ let Massage = (props) => {
                         </div>
                     </div>
                     <button className='button-click-message' onClick={() => {
-                        props.sendMessage(currentDialogId,message.current.value);
+                        props.sendMessage(currentDialogId, message.current.value);
                         message.current.value = '';
                     }}>send
                     </button>
@@ -85,9 +90,10 @@ let mapStateToProps = (state) => {
         messageTarget: state.addMessage,
         usersTest: state.checkUserLogin.informationUsers,
         currentMessageUser: state.setDialogId.currentMessageUser,
-        id:state.users.id,
+        id: state.users.id,
         informationUsers: state.setDialogId.informationUsers,
         currentUserMessage: state.setDialogId.currentUser,
+        information: state.users.information,
     }
 };
 let mapDispatchToProps = (dispatch) => {
@@ -101,11 +107,11 @@ let mapDispatchToProps = (dispatch) => {
         loginUserAction: (mas) => {
             dispatch(loginAction(mas))
         },
-        getMessages(e){
+        getMessages(e) {
             dispatch(getMessages(e))
         },
-        sendMessage(id,body){
-            dispatch(sendMessage(id,body))
+        sendMessage(id, body) {
+            dispatch(sendMessage(id, body))
         }
     }
 };

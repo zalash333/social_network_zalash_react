@@ -3,23 +3,18 @@ import Img from "../../img/logo.png"
 import "./HeaderStyle.css";
 import {Link, NavLink, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {loginAction} from "../../reducer/loginIdReducer";
 import {setIsAuth} from "../../reducer/authReducer";
-import {authMeAction, getStatusAction} from "../../reducer/usersReducer";
+import {authLogout, authMeAction, getStatusAction} from "../../reducer/usersReducer";
 import {MdSearch} from "react-icons/md/index";
-import {Redirect} from "react-router-dom";
-import HeaderCheckLogin from "./HeaderCheckLogin";
 import HeaderHoc from "./HeaderHoc";
+import missingAvatar from '../../img/missingAvatar.jpg';
 
 
 let Header = (props) => {
     let {currentUser, loginBack, authMeAction, loginUser,idUsers,statusUsers} = props;
     return (
         <div className="header">
-            {/*{props.isAnswerServer?'':<Redirect to="/"/>}*/}
-            {/*{!idUsers?props.authMeAction():''}*/}
-            {!statusUsers&&idUsers?props.getStatusAction(idUsers):''}
-            {/*{props.status === statuses.INPROGRESS ? <Loading/> : ''}*/}
+            {/*{!statusUsers&&idUsers?props.getStatusAction(idUsers):''}*/}
             <div>
                 <img className="imgLogo" src={Img}/>
             </div>
@@ -27,13 +22,13 @@ let Header = (props) => {
                 <MdSearch className='icon-header-search'/>
                 <textarea placeholder='Поиск' wrap='off' className='search-text-area'/>
             </div>
-            <NavLink className='nameLogo' to={'../../'}>
-                <div className="userAuthorized">
-                    {loginBack(false)}
+            <Link className='nameLogo' to={''} onClick={props.authLogout}>
+                <div className="userAuthorized" >
+                    {/*{loginBack(false)}*/}
                     <span className="nameUser">{currentUser.name}</span>
-                    <img className="imgLogoAction" src={currentUser.photo}/>
+                    <img className="imgLogoAction" src={props.information.photos ? props.information.photos.small : missingAvatar}/>
                 </div>
-            </NavLink>
+            </Link>
         </div>
     );
 };
@@ -48,6 +43,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         getStatusAction:(id)=>{
             dispatch(getStatusAction(id))
+        },
+        authLogout(){
+            dispatch(authLogout())
         }
     }
 };
@@ -60,6 +58,7 @@ let mapStateToProps = (state) => {
         loginCheck: state.users.loginCheck,
         isAnswerServer: state.users.isAnswerServer,
         status: state.status.status,
+        information: state.users.information,
     }
 };
 export default HeaderHoc(withRouter(connect(mapStateToProps, mapDispatchToProps)(Header)));

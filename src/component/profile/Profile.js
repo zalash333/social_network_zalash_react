@@ -29,15 +29,16 @@ import {
 } from "../../reducer/usersReducer";
 import ProfileHoc from "./ProfileHoc";
 import {NavLink} from "react-router-dom";
+import missingAvatar from '../../img/missingAvatar.jpg';
 
 
 const Profile = (props) => {
     let {flagStatusAction, flagStatus, statusUsers, flags, onTextarea, offTextarea, currentUser, addMessageMyWall, loginUser, messageMyWall, match, loginUserAction, usersTest, dataCheck, dataMyWall, setCallMessage, callMessage} = props;
     let message = React.createRef();
     let currentDialogId = match.params.id;
-    if (currentDialogId !== loginUser && !!usersTest[currentDialogId]) {
-        loginUserAction(currentDialogId);
-    }
+    // if (currentDialogId !== loginUser && !!usersTest[currentDialogId]) {
+    //     loginUserAction(currentDialogId);
+    // }
     let now = new Date();
     function blur() {
         if (!callMessage) {
@@ -51,7 +52,7 @@ const Profile = (props) => {
                 <div className="profileUsers">
                     <div className='information-editing'>
                         <img className="avatar"
-                             src={props.information.photos ? props.information.photos.small : currentUser.photo}/>
+                             src={props.information.photos ? props.information.photos.small : missingAvatar}/>
                         <div className='button-information-editing'>
                             <NavLink className='link' to={`/vk.com/information/editing/id9`} activeClassName="">
                                 <div className='button-editing-profile'>Редактирование</div>
@@ -60,11 +61,11 @@ const Profile = (props) => {
                     </div>
                     <div className="informationUsers">
                         <div className='name-lastName-status-block'>
-                            <span className='name-lastName'>{currentUser.name} {currentUser.lastName}</span>
-                            <div className="status-user">Status: <div className="status-current-user"
-                                                                      onDoubleClick={() => {
-                                                                          flagStatusAction();
-                                                                      }}>{flagStatus ? <span>{statusUsers}</span> :
+                            <span className='name-lastName'>{props.information.fullName}</span>
+                            <div className="status-user" onDoubleClick={() => {
+                                flagStatusAction();
+                            }}>Status: <div className="status-current-user"
+                                                                      >{flagStatus ? <span>{statusUsers}</span> :
                                 <div><input ref={message} autoFocus defaultValue={statusUsers}/>
                                     <button onClick={() => {
                                         props.putStatusAction(message.current.value);

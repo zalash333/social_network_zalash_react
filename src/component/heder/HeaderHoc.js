@@ -1,8 +1,9 @@
 import React from "react";
 import {Redirect} from "react-router";
-import {authMeAction, getStatusAction} from "../../reducer/usersReducer";
+import {authMeAction, getInformationUser, getStatusAction} from "../../reducer/usersReducer";
 import {setIsAuth} from "../../reducer/authReducer";
 import {connect} from "react-redux";
+import {getMessages, getUserProfile} from "../../reducer/setDialogIdReducer";
 
 const HeaderHoc = (WrappedComponent) => {
 
@@ -15,8 +16,9 @@ const HeaderHoc = (WrappedComponent) => {
             }
         }
 
-        componentWillMount() {
-            this.props.authMeAction()
+        componentDidMount() {
+            this.props.authMeAction();
+            this.props.getInformationUser();
             if (!this.state.loginCheck) {
                 this.setState({isAnswerServer: false})
             }
@@ -32,7 +34,13 @@ const HeaderHoc = (WrappedComponent) => {
 
         }
     }
-
-    return PP;
+    let mapDispatchToProps = (dispatch) => {
+        return {
+            getInformationUser:()=>{
+                dispatch(getInformationUser())
+            }
+        }
+    };
+    return connect(null,mapDispatchToProps)(PP);
 };
 export default HeaderHoc;

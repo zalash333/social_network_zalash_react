@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {getDialogs, getMessages, getUserProfile} from "../../reducer/setDialogIdReducer";
+import {authMeAction, getInformationUser} from "../../reducer/usersReducer";
 
 const MassageHoc = (WrappedComponent) => {
     class PP extends React.Component {
@@ -13,13 +14,13 @@ const MassageHoc = (WrappedComponent) => {
             }
 
         }
-        
+
         messageGet(){
             this.props.getMessages(this.state.currentDialogId);
             console.log('njjjj')
         }
-        componentDidMount(){
-            this.props.getUserProfile(this.state.currentDialogId)
+        async componentDidMount(){
+            await this.props.getUserProfile(this.state.currentDialogId)
         }
         componentWillMount() {
             this.messageGet();

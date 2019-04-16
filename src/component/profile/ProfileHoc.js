@@ -1,5 +1,5 @@
 import React from "react";
-import {getInformationUser} from "../../reducer/usersReducer";
+import {authMeAction, getInformationUser, getStatusAction} from "../../reducer/usersReducer";
 import {connect} from "react-redux";
 
 const ProfileHoc = (WrappedComponent) => {
@@ -12,8 +12,9 @@ const ProfileHoc = (WrappedComponent) => {
                 loginCheck: props.loginCheck
             }
         }
-        componentDidMount() {
-            this.props.getInformationUser();
+        async componentDidMount() {
+            await this.props.getInformationUser();
+            await this.props.getStatusAction()
 
         }
         render() {
@@ -26,10 +27,21 @@ const ProfileHoc = (WrappedComponent) => {
         return {
             getInformationUser(){
                 dispatch(getInformationUser())
+            },
+            getStatusAction:(id)=>{
+                dispatch(getStatusAction(id))
+            },
+            authMeAction:()=>{
+                dispatch(authMeAction())
             }
         }
     };
-    return connect(null, mapDispatchToProps)(PP);
+    let mapStateToProps = (state) => {
+        return {
+            idUsers: state.users.id
+        }
+    };
+    return connect(mapStateToProps, mapDispatchToProps)(PP);
 };
 
 export default (ProfileHoc);

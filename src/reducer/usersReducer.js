@@ -25,9 +25,9 @@ let initialStateUsers = {
             website: null,
             youtube: null
         },
-        // "lookingForAJob": true,
-        // "lookingForAJobDescription": 'не ищу',
-        // "fullName": "Jak Zigil`man"
+        lookingForAJob: true,
+        lookingForAJobDescription: null,
+        fullName: null
     },
     photo: null,
     toggleInformation: 'CONTACTS',
@@ -77,7 +77,9 @@ export const putInformationOfForm = (inf) => (dispatch, getState) => {
             }
         }).then(res => {
             if (res.data.resultCode === 0) {
-                axiosInstance.get('profile/9').then(r => {
+                let idUser = getState().users.id;
+                debugger
+                axiosInstance.get(`profile/${idUser}`).then(r => {
                     console.log(r)
                     dispatch(photoFormAction(r.data.photos));
                 })
@@ -104,9 +106,9 @@ const getInformationUserAction = (information) => ({type: GET_INFORMATION_USER, 
 // const getPhotoUserAction = (photo) => ({type: GET_PHOTO_USER, photo});
 
 
-export const getInformationUser = () => (dispatch, getState) => {
-    let userId = getState().users.id;
-    axiosInstance.get(`profile/9`).then(response => {
+export const getInformationUser = () => async (dispatch) => {
+    let promise= await axiosInstance.get('auth/me');
+    axiosInstance.get(`profile/${promise.data.data.id}`).then(response => {
         dispatch(getInformationUserAction(response.data))
         console.log(response.data)
         // dispatch(getPhotoUserAction(response.data))
@@ -118,15 +120,22 @@ export const setInformationUser = () => (dispatch, getState) => {
         console.log(rus);
     })
 };
-export const getStatusAction = (id) => (d) => {
+export const getStatusAction = (id) => async (d) => {
+   let promise= await axiosInstance.get('auth/me');
     d(setStatus(statuses.INPROGRESS));
-    axiosInstance.get(`profile/status/${id}`).then(r => {
+    axiosInstance.get(`profile/status/${promise.data.data.id}`).then(r => {
         // axiosInstance.get(`users`).then(r=>{
         console.log(r);
         d(currentGetUser(r.data));
         d(setStatus(statuses.SUCCESS))
     })
 };
+
+export const authLogout = ()=>(dispatch) =>{
+    axiosInstance.post('auth/logout')
+        .then(res=>console.log(res))
+};
+
 
 const AUTH_ME = 'AUTH_ME';
 export const informationUserMe = (id) => ({type: AUTH_ME, id});
@@ -153,7 +162,6 @@ export const authMeAction = () => (d) => {
             console.log(error);
             d(isAnswerServerAction(false))
         })
-
 };
 
 const IS_ANSWER_SERVER = 'IS_ANSWER_SERVER';
@@ -169,17 +177,9 @@ const TOGGLE = 'TOGGLE';
 export const toggle = () => ({type: TOGGLE});
 
 const GET_USERS = 'GET_USERS';
-export const usersAction = (num) => async (d, getState) => {
+export const usersAction = () => async (d, getState) => {
     let page = getState().users.page;
-    // d(setStatus(statuses.INPROGRESS));
-    // if (page === num) {
-    //     d(getUsers(null, null))
-    // }
     let request = await axiosInstance.get(`users?page=${page}&count=6`);
-    //     .then(r => {
-    //     d(getUsers(r.data.items, r.data.totalCount))
-    //     // d(setStatus(statuses.SUCCESS))
-    // })
     d(getUsers(request.data.items, request.data.totalCount))
 
 };
@@ -218,6 +218,9 @@ let usersReducer = (state = initialStateUsers, action) => {
             return {...state, information: action.information};
         case INFORMATION_FORM:
             copyState.information.aboutMe = action.information.aboutMe;
+            copyState.information.lookingForAJob = action.information.lookingForAJob;
+            copyState.information.lookingForAJobDescription = action.information.lookingJob;
+            copyState.information.fullName = action.information.fullName;
             return copyState;
         case CONTACTS_FORM:
             copyState.information.contacts = action.information;

@@ -1,6 +1,6 @@
 import React from 'react';
 import './LoginStyle.css'
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {connect} from "react-redux";
 import {ErrorAction, falseErrorAction, loginAction} from "../../reducer/loginIdReducer";
 import {LoginAuth} from "../../reducer/authReducer";
@@ -55,9 +55,9 @@ const Login = (props) => {
             <div className='LoginStyle'>
                 <div className='loginDiv'>
                     <span>{currentUser.name}</span>
-                    <Link to={'/vk.com/profile/id' + loginUser}>
+                    <NavLink to={'/vk.com/profile/id' + loginUser}>
                         <span><img src={currentUser.photo}/></span>
-                    </Link>
+                    </NavLink>
                     <span>welcome my friends</span>
                 </div>
             </div>)
