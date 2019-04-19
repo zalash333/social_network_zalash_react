@@ -24,8 +24,8 @@ import EmojiMartPicker from "emoji-mart-picker";
 import {
     authMeAction,
     flagStatusAction, getInformationUser,
-    getStatusAction, putStatusAction, setInformationUser,
-     toggle
+    getStatusAction, photoGetRandom, putStatusAction, setInformationUser,
+    toggle
 } from "../../reducer/usersReducer";
 import ProfileHoc from "./ProfileHoc";
 import {NavLink} from "react-router-dom";
@@ -48,7 +48,7 @@ const Profile = (props) => {
     return (
         <div className="profile">
             <div className='scroll'>
-                <img className="imgProfile" src={imgProfile}/>
+                <img className="imgProfile" src={props.photo?props.photo:imgProfile}/>
                 <div className="profileUsers">
                     <div className='information-editing'>
                         <img className="avatar"

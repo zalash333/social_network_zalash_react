@@ -1,5 +1,6 @@
 import axiosInstance from "../dal/axios-instance";
 import {setStatus, statuses} from "./statusReducer";
+import axiosImg from "../dal/axios-img";
 
 let initialStateUsers = {
     users: [],
@@ -33,6 +34,8 @@ let initialStateUsers = {
     toggleInformation: 'CONTACTS',
     toggle: false,
 };
+
+
 const GET_STATUS_USER = 'GET_STATUS_USER';
 export const currentGetUser = (status) => ({type: GET_STATUS_USER, status});
 
