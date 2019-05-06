@@ -101,17 +101,10 @@ export function* getDialogs() {
 
 
 //
-const getProfileUser = async (users,i) =>{
-    return await axiosInstance.get(`profile/${users[i].id}`)
-};
-
 const getUsers = (users) => async (dispatch) => {
         for (let i = 0; users.length > i; i++) {
-           // let request = await axiosInstance.get(`profile/${users[i].id}`).catch(error=>axiosInstance.get(`profile/${users[i].id}`));
-           setTimeout(()=> getProfileUser(users,i).then(
-                (e)=>dispatch(getUsersProfileAction(e.data))
-            ),1000*i)
-
+           let request = await axiosInstance.get(`profile/${users[i].id}`).catch(error=>axiosInstance.get(`profile/${users[i].id}`));
+            setTimeout(()=>dispatch(getUsersProfileAction(request.data)),i*1000);
         }
 };
 
