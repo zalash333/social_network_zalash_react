@@ -1,5 +1,5 @@
 import axiosInstance from "../dal/axios-instance";
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import {call, put, takeEvery, takeLatest} from 'redux-saga/effects'
 
 let initialStateSetDialogId = {
     dialogsId: '1488',
@@ -7,8 +7,8 @@ let initialStateSetDialogId = {
     informationUsers: [],
     currentMessageUser: '',
     currentUser: {
-        photos:{
-            small:''
+        photos: {
+            small: ''
         }
     }
 };
@@ -52,9 +52,9 @@ export const clearAllDialogAction = () => {
 };
 
 const GET_USER_PROFILE = 'GET_USER_PROFILE';
-const getUserProfileAction = (profile) => ({type: GET_USER_PROFILE,profile});
+const getUserProfileAction = (profile) => ({type: GET_USER_PROFILE, profile});
 
-export const getUserProfile = (id)=> async(dispatch)=>{
+export const getUserProfile = (id) => async (dispatch) => {
     debugger
     let request = await axiosInstance.get(`profile/${id}`);
     dispatch(getUserProfileAction(request.data))
@@ -71,8 +71,6 @@ export const getUserProfile = (id)=> async(dispatch)=>{
 //     let get = await axiosInstance.get('dialogs');
 //     dispatch(getUsers(get.data))
 // };
-
-
 
 
 function* fetchUser() {
@@ -101,11 +99,18 @@ export function* getDialogs() {
 
 
 //
+
+const getProfileUser = async (users, i) => {
+    return await axiosInstance.get(`profile/${users[i].id}`)
+};
+
 const getUsers = (users) => async (dispatch) => {
-        for (let i = 0; users.length > i; i++) {
-           let request = await axiosInstance.get(`profile/${users[i].id}`).catch(error=>axiosInstance.get(`profile/${users[i].id}`));
-            setTimeout(()=>dispatch(getUsersProfileAction(request.data)),i*1000);
-        }
+    for (let i = 0; users.length > i; i++) {
+        // let request = await axiosInstance.get(`profile/${users[i].id}`).catch(error=>axiosInstance.get(`profile/${users[i].id}`));
+        setTimeout(() => getProfileUser(users, i).then(
+            (e) => dispatch(getUsersProfileAction(e.data))
+        ), 1000 * i)
+    }
 };
 
 // const getUsers = (users) => async (dispatch) => {
