@@ -1,4 +1,5 @@
 import axiosInstance from "../dal/axios-instance";
+import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 
 let initialStateSetDialogId = {
     dialogsId: '1488',
@@ -44,7 +45,7 @@ const getCurrentMessageUserAction = (message) => {
 };
 
 const CLEAR_ALL_DIALOG = 'CLEAR_ALL_DIALOG';
-const clearAllDialogAction = () => {
+export const clearAllDialogAction = () => {
     return {
         type: CLEAR_ALL_DIALOG
     }
@@ -62,24 +63,62 @@ export const getUserProfile = (id)=> async(dispatch)=>{
 
 // Запросить список собеседников, с кем я когда-либо вёл беседу
 // return http://prntscr.com/n6nz6o
-export const getDialogs = () => async (dispatch) => {
-    // dispatch(clearAllDialogAction());
-    debugger
-    let get = await axiosInstance.get('dialogs');
-    dispatch(getUsers(get.data))
+
+
+// export const getDialogs = () => async (dispatch) => {
+//     // dispatch(clearAllDialogAction());
+//     debugger
+//     let get = await axiosInstance.get('dialogs');
+//     dispatch(getUsers(get.data))
+// };
+
+
+
+
+function* fetchUser() {
+    try {
+        debugger
+        const user = yield call(axiosInstance, 'dialogs');
+        yield put(getUsers(user.data));
+    } catch (e) {
+        yield alert(e);
+    }
+}
+
+export function* getDialogs() {
+    yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
+}
+
+// function* getUsers (users){
+//     debugger
+//     let buffer = [];
+//         for (let i = 0; users.length > i; i++) {
+//             const request = yield call(axiosInstance, `profile/${users[i].id}`);
+//             buffer.push(request.data);
+//         }
+//    yield put (getUsersProfileAction(buffer))
+// }
+
+
+//
+const getUsers = (users) => async (dispatch) => {
+        for (let i = 0; users.length > i; i++) {
+           let request = await axiosInstance.get(`profile/${users[i].id}`).catch(error=>axiosInstance.get(`profile/${users[i].id}`));
+            setTimeout(()=>dispatch(getUsersProfileAction(request.data)),i*1000);
+        }
 };
 
-const getUsers = (users) => async (dispatch) => {
-    let buffer = [];
-    let usersAllDialogs = await (async (us = users) => {
-        for (let i = 0; us.length > i; i++) {
-            let request = await axiosInstance.get(`profile/${us[i].id}`);
-            buffer.push(request.data);
-        }
-        return buffer
-    })();
-    dispatch(getUsersProfileAction(usersAllDialogs))
-};
+// const getUsers = (users) => async (dispatch) => {
+//     let buffer = [];
+//     let usersAllDialogs = await (async (us = users) => {
+//         for (let i = 0; us.length > i; i++) {
+//             let request = await axiosInstance.get(`profile/${us[i].id}`);
+//             buffer.push(request.data);
+//         }
+//         return buffer
+//     })();
+//     dispatch(getUsersProfileAction(usersAllDialogs))
+// };
 
 // запросить список сообщений с конкретным собеседником (userId)
 // return http://prntscr.com/n6nq5a
@@ -163,8 +202,8 @@ let setDialogIdReducer = (state = initialStateSetDialogId, action) => {
         case GET_DIALOG:
             return {...state, dialogUsersAll: action.information};
         case GET_USERS_PROFILE:
-            // copyState.informationUsers.push(action.information);
-            return {...state, informationUsers: action.information};
+            copyState.informationUsers = [...state.informationUsers, action.information];
+            return copyState;
         case SET_DIALOG_ID:
             copyState.dialogsId = action.id;
             return copyState;

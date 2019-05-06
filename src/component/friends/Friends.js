@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {connect} from "react-redux";
 import {usersAction} from "../../reducer/usersReducer";
 import missingAvatar from '../../img/missingAvatar.jpg';
@@ -11,14 +11,15 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Search from "../search/Search";
 
 const Friends = (props) => {
-    debugger
+    // useEffect(()=>alert('dasdasd'),[]);
+
     return (
         <div className='friends'>
             <div className="friends-container">
                 <Search/>
                 <InfiniteScroll
                     dataLength={props.users.length}
-                    loader={<h4>Loading...</h4>}
+                    loader={<div className="loader">Loading...</div>}
                     next={()=>props.usersAction(1)}
                     hasMore={true}
                 >

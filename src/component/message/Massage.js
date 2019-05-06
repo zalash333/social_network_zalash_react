@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import "./MassageStyle.css"
 import {connect} from "react-redux";
 import withRouter from "react-router-dom/es/withRouter";
@@ -12,7 +12,7 @@ import missingAvatar from '../../img/missingAvatar.jpg';
 
 let Massage = (props) => {
     let message = React.createRef();
-    let {massagePage, currentUser, dialogId, match, setDialogIdAction, usersTest,} = props;
+    let {currentUser, dialogId, match, setDialogIdAction, usersTest} = props;
     let currentUserId = match.params.id;
     let currentDialogId = match.params.userId;
     if (currentDialogId !== dialogId && !!usersTest[currentUserId]) {
@@ -40,8 +40,7 @@ let Massage = (props) => {
                                 return (<div className="massageYou">
                                         {console.log(props.currentUserMessage)}
                                         {console.log(currentUser)}
-                                    <img
-                                        src={props.currentUserMessage.photos.small ? props.currentUserMessage.photos.small : missingAvatar}/>
+                                    <img src={props.currentUserMessage.photos.small ? props.currentUserMessage.photos.small : missingAvatar}/>
                                     <span>{el.body}</span>
                                 </div>)
                             } else {

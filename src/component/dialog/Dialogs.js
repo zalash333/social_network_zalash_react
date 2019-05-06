@@ -1,18 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import "./DialogsStyle.css"
 import {NavLink} from "react-router-dom";
 import {loginAction} from "../../reducer/loginIdReducer";
 import {connect} from "react-redux";
-import {dialogIdAction, getDialogs, getMessages, sendMessage} from "../../reducer/setDialogIdReducer";
-import withRouter from "react-router-dom/es/withRouter";
-import {MdMailOutline, MdSearch} from "react-icons/md/index";
-import {IoIosAdd} from "react-icons/io/index";
+import {
+    clearAllDialogAction,
+    dialogIdAction,} from "../../reducer/setDialogIdReducer";
+import {MdMailOutline} from "react-icons/md/index";
 import DialogHoc from "./DialogHoc";
 import missingAvatar from '../../img/missingAvatar.jpg';
 import Search from "../search/Search";
 
 
 const Dialogs = (props) => {
+    useEffect(()=>{
+        return ()=>{props.clearAllDialogAction()}
+    },[]);
     return (
         <div className='container-dialog'>
             <div className="dialog">
@@ -43,6 +46,7 @@ const Dialogs = (props) => {
                         </div>
                     )
                 })}
+                <div className="loader">Loading...</div>
             </div>
             <div className='block-checked-messages'><span className='text-all-massage'>Все сообщения<MdMailOutline
                 className='icon-in'/></span>
@@ -75,8 +79,11 @@ let mapDispatchToProps = (dispatch) => {
             dispatch(loginAction(mas))
         },
         getDialogs() {
-            dispatch(getDialogs())
+            dispatch({type:"USER_FETCH_REQUESTED"})
         },
+        clearAllDialogAction(){
+            dispatch(clearAllDialogAction())
+        }
     }
 };
 

@@ -30,7 +30,7 @@ const DialogHoc = (WrappedComponent) => {
                 dispatch(sendMessage())
             },
             getDialogs() {
-                dispatch(getDialogs())
+                dispatch({type:"USER_FETCH_REQUESTED"})
             },
         }
     };
