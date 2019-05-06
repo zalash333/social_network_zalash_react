@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c676ed8e-340b-4c8f-8ae7-aa8d2535071b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/dialog/DialogHoc.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/dialog/DialogHoc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/dialog/Dialogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/dialog/Dialogs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/friends/Friends.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/friends/Friends.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/friends/FriendsStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/friends/FriendsStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/message/Massage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/message/Massage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dal/axios-instance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/dal/axios-instance.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducer/setDialogIdReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducer/setDialogIdReducer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -89,7 +80,7 @@
       <file leaf-file-name="usersReducer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reducer/usersReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
+            <state relative-caret-position="-1766">
               <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
@@ -98,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setDialogIdReducer.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="setDialogIdReducer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/reducer/setDialogIdReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="105" column="74" selection-start-line="105" selection-start-column="74" selection-end-line="105" selection-end-column="74" />
+            <state relative-caret-position="440">
+              <caret line="110" column="26" selection-start-line="110" selection-start-column="26" selection-end-line="110" selection-end-column="26" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -110,7 +101,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Friends.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Friends.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/friends/Friends.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
@@ -238,10 +229,10 @@
         <option value="$PROJECT_DIR$/src/dal/axios-instance.js" />
         <option value="$PROJECT_DIR$/src/component/message/MassageHoc.js" />
         <option value="$PROJECT_DIR$/src/component/message/Massage.js" />
-        <option value="$PROJECT_DIR$/src/reducer/setDialogIdReducer.js" />
         <option value="$PROJECT_DIR$/src/component/friends/Friends.js" />
         <option value="$PROJECT_DIR$/src/component/dialog/Dialogs.js" />
         <option value="$PROJECT_DIR$/src/component/friends/FriendsStyle.css" />
+        <option value="$PROJECT_DIR$/src/reducer/setDialogIdReducer.js" />
       </list>
     </option>
   </component>
@@ -530,12 +521,12 @@
       <workItem from="1556533844205" duration="12607000" />
       <workItem from="1556885160743" duration="2529000" />
       <workItem from="1556977227952" duration="6095000" />
-      <workItem from="1557055109741" duration="12372000" />
+      <workItem from="1557055109741" duration="14735000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="813048000" />
+    <option name="totallyTimeSpent" value="815411000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="33" width="1550" height="838" extended-state="6" />
@@ -764,6 +755,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="50" column="72" selection-start-line="50" selection-start-column="72" selection-end-line="50" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -890,26 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducer/usersReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducer/setDialogIdReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="105" column="74" selection-start-line="105" selection-start-column="74" selection-end-line="105" selection-end-column="74" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/dialog/Dialogs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
@@ -933,6 +907,26 @@
           <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="68" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducer/usersReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1766">
+          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducer/setDialogIdReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="110" column="26" selection-start-line="110" selection-start-column="26" selection-end-line="110" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
