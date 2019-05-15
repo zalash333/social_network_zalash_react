@@ -1,5 +1,5 @@
 import React from "react";
-import {authMeAction, getInformationUser, getStatusAction} from "../../reducer/usersReducer";
+import {authMeAction, getInformationUser, getStatusAction, photoCollection} from "../../reducer/usersReducer";
 import {connect} from "react-redux";
 
 const ProfileHoc = (WrappedComponent) => {
@@ -8,7 +8,6 @@ const ProfileHoc = (WrappedComponent) => {
             super(props);
             console.log(props);
             this.state = {
-                photo:'',
                 timer:'',
                 collection:['190727','17098','494263','539527','3178572','3106804','573009','540518'],
                 isAnswerServer: props.isAnswerServer,
@@ -16,9 +15,7 @@ const ProfileHoc = (WrappedComponent) => {
             }
         }
         componentWillMount(){
-            // this.state.timer = setInterval(()=>{this.setState({photo:''})},2500)
-
-            this.state.timer = setInterval(()=>{this.setState({photo:`https://source.unsplash.com/collection/${this.state.collection[Math.floor(Math.random() * this.state.collection.length)]}/1600x300`})},8000)
+            this.state.timer = setInterval(()=>{this.props.photoCollection(this.state.collection[Math.floor(Math.random() * this.state.collection.length)])},8000);
         }
         componentWillUnmount(){
             window.clearInterval(this.state.timer)
@@ -28,13 +25,14 @@ const ProfileHoc = (WrappedComponent) => {
             await this.props.getStatusAction();
         }
         render() {
-            return <WrappedComponent photo={this.state.photo} />}
-
-
+            return <WrappedComponent/>}
     }
 
     let mapDispatchToProps = (dispatch) => {
         return {
+            photoCollection(collection){
+                dispatch(photoCollection(collection))
+            },
             getInformationUser(){
                 dispatch(getInformationUser())
             },
@@ -48,7 +46,8 @@ const ProfileHoc = (WrappedComponent) => {
     };
     let mapStateToProps = (state) => {
         return {
-            idUsers: state.users.id
+            idUsers: state.users.id,
+            photoUrl: state.users.photoUrl,
         }
     };
     return connect(mapStateToProps, mapDispatchToProps)(PP);

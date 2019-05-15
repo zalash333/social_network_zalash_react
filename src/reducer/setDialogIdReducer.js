@@ -87,46 +87,18 @@ export function* getDialogs() {
     yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
 }
 
-// function* getUsers (users){
-//     debugger
-//     let buffer = [];
-//         for (let i = 0; users.length > i; i++) {
-//             const request = yield call(axiosInstance, `profile/${users[i].id}`);
-//             buffer.push(request.data);
-//         }
-//    yield put (getUsersProfileAction(buffer))
-// }
-
-
-//
-
 const getProfileUser = async (users, i) => {
     return await axiosInstance.get(`profile/${users[i].id}`)
 };
 
 const getUsers = (users) => async (dispatch) => {
     for (let i = 0; users.length > i; i++) {
-        // let request = await axiosInstance.get(`profile/${users[i].id}`).catch(error=>axiosInstance.get(`profile/${users[i].id}`));
         setTimeout(() => getProfileUser(users, i).then(
             (e) => dispatch(getUsersProfileAction(e.data))
-        ), 1000 * i)
+        ), 500 * i)
     }
 };
 
-// const getUsers = (users) => async (dispatch) => {
-//     let buffer = [];
-//     let usersAllDialogs = await (async (us = users) => {
-//         for (let i = 0; us.length > i; i++) {
-//             let request = await axiosInstance.get(`profile/${us[i].id}`);
-//             buffer.push(request.data);
-//         }
-//         return buffer
-//     })();
-//     dispatch(getUsersProfileAction(usersAllDialogs))
-// };
-
-// запросить список сообщений с конкретным собеседником (userId)
-// return http://prntscr.com/n6nq5a
 export const getMessages = (userId) => (dispatch) => {
     axiosInstance.get(`dialogs/${userId}/messages`)
         .then(res => {

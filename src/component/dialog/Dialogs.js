@@ -5,22 +5,28 @@ import {loginAction} from "../../reducer/loginIdReducer";
 import {connect} from "react-redux";
 import {
     clearAllDialogAction,
-    dialogIdAction,} from "../../reducer/setDialogIdReducer";
+    dialogIdAction,
+} from "../../reducer/setDialogIdReducer";
 import {MdMailOutline} from "react-icons/md/index";
 import DialogHoc from "./DialogHoc";
 import missingAvatar from '../../img/missingAvatar.jpg';
 import Search from "../search/Search";
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import {TransitionGroup} from "react-transition-group";
 
 
 const Dialogs = (props) => {
-    useEffect(()=>{
-        return ()=>{props.clearAllDialogAction()}
-    },[]);
+    useEffect(() => {
+        return () => {
+            props.clearAllDialogAction()
+        }
+    }, []);
     return (
         <div className='container-dialog'>
             <div className="dialog">
                 <Search/>
-                {!props.informationUsers.length?'':props.informationUsers.map((user, index) => {
+                {!props.informationUsers.length ? '' : props.informationUsers.map((user, index) => {
                     return (
                         <div className='style-block-dialogs'>
                             <NavLink className='link-message'
@@ -79,9 +85,9 @@ let mapDispatchToProps = (dispatch) => {
             dispatch(loginAction(mas))
         },
         getDialogs() {
-            dispatch({type:"USER_FETCH_REQUESTED"})
+            dispatch({type: "USER_FETCH_REQUESTED"})
         },
-        clearAllDialogAction(){
+        clearAllDialogAction() {
             dispatch(clearAllDialogAction())
         }
     }

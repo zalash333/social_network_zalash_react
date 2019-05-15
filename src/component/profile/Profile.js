@@ -31,8 +31,8 @@ import ProfileHoc from "./ProfileHoc";
 import {NavLink} from "react-router-dom";
 import missingAvatar from '../../img/missingAvatar.jpg';
 
-
 const Profile = (props) => {
+    debugger
     let {flagStatusAction, flagStatus, statusUsers, flags, onTextarea, offTextarea, currentUser, addMessageMyWall, loginUser, messageMyWall, match, loginUserAction, usersTest, dataCheck, dataMyWall, setCallMessage, callMessage} = props;
     let message = React.createRef();
     let currentDialogId = match.params.id;
@@ -48,7 +48,7 @@ const Profile = (props) => {
     return (
         <div className="profile">
             <div className='scroll'>
-                <img className="imgProfile" src={props.photo?props.photo:imgProfile}/>
+                <img className="imgProfile" src={props.photoUrl?props.photoUrl:imgProfile}/>
                 <div className="profileUsers">
                     <div className='information-editing'>
                         <img className="avatar"
@@ -99,7 +99,9 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <div className="buttonAllUsers">
-                    <h2>My notes</h2>
+                    <h2>My notes<div id='123'>
+
+                    </div></h2>
                     <div className='textareaAndButton'>
                         {flags ?
                             <div className='avatarAndTextarea'>
@@ -205,7 +207,8 @@ let mapStateToProps = (state) => {
         flagStatus: state.users.flagStatus,
         information: state.users.information,
         status: state.status.status,
-        toggle: state.users.toggle
+        toggle: state.users.toggle,
+        photoUrl: state.users.photoUrl
     }
 };
 let mapDispatchToProps = (dispatch) => {

@@ -134,3 +134,38 @@
 .text-all-massage:hover{
       background-color: #d6d6d6;
   }
+
+
+/*.style-block-dialogs:before{*/
+    /*display: block;*/
+    /*opacity: 1;*/
+    /*background-color: red;*/
+    /*transition: all 10s;*/
+/*}*/
+/*.style-block-dialogs {*/
+    /*opacity: 1;*/
+    /*transition: all 10s;*/
+/*}*/
+/*.style-block-dialogs:after{*/
+    /*background-color: white;*/
+    /*display: block;*/
+    /*opacity: 0;*/
+/*}*/
+
+.example-enter {
+    opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+    opacity: 1;
+}
+
+.example-leave.example-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}

@@ -14,6 +14,7 @@ let initialStateUsers = {
     myFriendsCheck: true,
     isAnswerServer: true,
     totalCount: '',
+    photoUrl:'',
     information: {
         aboutMe: null,
         contacts: {
@@ -47,7 +48,7 @@ export const putStatusAction = (status) => (d) => {
     axiosInstance.put('profile/status', {
         status
     }).then(r => {
-        console.log(r)
+        console.log(r);
         d(currentGetUser(status));
         d(setStatus(statuses.SUCCESS))
     })
@@ -179,6 +180,14 @@ export const toggleInformation = (toggleInformation) => ({type: TOGGLE_FORM, tog
 const TOGGLE = 'TOGGLE';
 export const toggle = () => ({type: TOGGLE});
 
+const PHOTO_COLLECTION = 'PHOTO_COLLECTION';
+export const photoCollectionAction = (file) => ({type: PHOTO_COLLECTION,file});
+
+export const photoCollection = (collection)=>(dispatch)=>{
+    fetch(`https://source.unsplash.com/collection/${collection}/1600x300`)
+        .then(res=>dispatch(photoCollectionAction(res.url)))
+};
+
 const GET_USERS = 'GET_USERS';
 export const usersAction = () => async (d, getState) => {
     let page = getState().users.page;
@@ -209,6 +218,8 @@ let usersReducer = (state = initialStateUsers, action) => {
             };
         case GET_STATUS_USER:
             return {...state, status: action.status};
+        case PHOTO_COLLECTION:
+            return {...state, photoUrl: action.file};
         case AUTH_ME:
             return {...state, id: action.id};
         case FLAG_STATUS:
