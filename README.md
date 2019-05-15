@@ -1,4 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![alt tag](https://pp.userapi.com/c851428/v851428299/121d48/ipokUwgp-Vg.jpg "screen")
+![alt tag](https://pp.userapi.com/c851428/v851428299/121d58/hEoXcs6klLA.jpg "screen")
+![alt tag](https://pp.userapi.com/c849128/v849128958/1919b5/TzhJ4MtSmhw.jpg "screen")
+![alt tag](https://pp.userapi.com/c849128/v849128958/1919be/dP9k303-o-k.jpg "screen")
+![alt tag](https://pp.userapi.com/c849128/v849128958/1919d2/7FWpNDqYfXw.jpg "screen")
+![alt tag](https://pp.userapi.com/c849128/v849128958/1919dc/p5VO9dCwXiQ.jpg "screen")
+![alt tag](https://pp.userapi.com/c849128/v849128958/1919e5/ONsKTuCMqY0.jpg "screen")
+![alt tag](https://pp.userapi.com/c849128/v849128958/1919ee/iY0OsDlTfes.jpg "screen")
+![alt tag](https://pp.userapi.com/c849128/v849128958/191a02/tloMW_hV-0U.jpg "screen")
 
 ## Available Scripts
 
@@ -6,7 +15,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.<br>
+Запускает приложение в режиме разработки. <Бр>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
