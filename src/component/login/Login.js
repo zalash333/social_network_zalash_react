@@ -14,7 +14,7 @@ const Login = (props) => {
     if (!props.isAuth) {
         return (<div className='LoginStyle'>
             <div className='loginPut'>
-                <h2>Hi, please set id</h2>
+                <h2>Hi, sign in</h2>
                 <textarea defaultValue='zalash1993@gmail.com' disabled={loading} placeholder={checkError ? 'error' : 'login'}
                           className={checkError ? 'error' : ''} ref={loginRef} onClick={() => {
                     loginRef.current.value = '';
